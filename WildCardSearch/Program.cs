@@ -55,14 +55,6 @@ namespace WildCardSearch
     public class Program
     {
         /// <summary>
-        /// Loads data from file
-        /// </summary>
-        private static string[] LoadIdsFromFile(string filePath)
-        {
-            return File.ReadAllLines(filePath);
-        }
-
-        /// <summary>
         /// Reads in the WildCard pattern from the Standard input
         /// </summary>
         private static string GetPatternFromStdIn()
@@ -78,9 +70,9 @@ namespace WildCardSearch
         {
             // Place the input.txt file to the WorkDirectory
             var filePath = Path.Combine(Directory.GetCurrentDirectory(), "input.txt");
+            var data = File.ReadAllLines(filePath);
 
-            var IDs = LoadIdsFromFile(filePath);
-            var match = IDs.WildCardMatch(GetPatternFromStdIn());
+            var match = data.WildCardMatch(GetPatternFromStdIn());
 
             if (match.Length == 0)
             {
